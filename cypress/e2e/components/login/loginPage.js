@@ -1,12 +1,12 @@
 class LoginPage {
     navigate() {
-        cy.visit('/');
+        cy.visit(Cypress.env('url'));
     }
-    fillFormAndSubmit(username, password) {
+    login(username, password) {
         cy.get('#user-name').type(username);
         cy.get('#password').type(password);
         cy.get('#login-button').click();
-        
+             
       }
       getUsernameInput() {
         return cy.get('#user-name');
@@ -20,6 +20,10 @@ class LoginPage {
         return cy.get('#login-button');
       }
 
+      errorLabel(){
+        return cy.get('.error-message-container.error');
+      }
+     
     //placeholder y logo 
     //script de web en config
     

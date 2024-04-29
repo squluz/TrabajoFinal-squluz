@@ -1,10 +1,12 @@
 import LoginPage from '../components/login/loginPage';
+import ProductInventory from '../components/inventory/ProductInventory';
 
 describe('Validate login with validate credencial', () => {
   const loginPage = new LoginPage();
+  const productPage = new ProductInventory();
 
   beforeEach(() => {
-    loginPage.visit();
+    loginPage.navigate();
   });
 
   it('should display login page elements', () => {
@@ -14,16 +16,14 @@ describe('Validate login with validate credencial', () => {
   });
   
   it('should validate incorrect login', () => {
-    loginPage.getUsernameInput().type('errortext');
-    loginPage.getPasswordInput().type('errorpass');
-    loginPage.getLoginButton().click();
+    loginPage.login('errortext','errorpass');
+    loginPage.errorLabel().should('be.visible');
   });
 
 
   it('should validate login functionality', () => {
-    loginPage.getUsernameInput().type('standard_user');
-    loginPage.getPasswordInput().type('secret_sauce');
-    loginPage.getLoginButton().click();
+   loginPage.login('standard_user', 'secret_sauce'); 
+   productPage.pageTitle().should('be.visible');
 
 
   });

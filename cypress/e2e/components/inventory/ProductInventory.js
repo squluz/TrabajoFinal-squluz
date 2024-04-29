@@ -9,6 +9,9 @@ cardProduct(product, details, price){
     cy.get('#add-to-cart-sauce-labs-backpack').click();
      
   }
+  pageTitle(){
+    return cy.get('[data-test="title"]');
+  }
   //revisar factibilidad de escribirlo asi 
 
   addToCart(productName) {
