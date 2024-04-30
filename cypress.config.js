@@ -5,6 +5,8 @@ module.exports = {
     },
     env:{
       url: 'https://www.saucedemo.com/',
+      qauser:'standard_user',
+      qapassword:'secret_sauce',
   },
 },
 };

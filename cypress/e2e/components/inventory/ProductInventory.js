@@ -39,18 +39,22 @@ cardProduct(product, details, price){
       .contains(categoryName)
       .click();
   }
-  filterProduct(productSort){
-    cy.get('[data-test=search-box]')
-      .type(productSort);
-    cy.get('.product_sort_container')
-      .should('be.visible');
+  filterProduct(orderBy){
+    cy.get('.product_sort_container').select(orderBy)
+     
+
   }
-  verifyCopyright() {
+  filterOptions(){
+    return['az','za','lohi','hilo']
+  } 
+   verifyCopyright() {
     return cy.get('.footer_copy').invoke('text').should('contain', 'Sauce Labs');
   }
-
+socialMediaOption(){
+  return ['Twitter','Facebook','LinkedIn']
+}
   verifySocialMediaLinks() {
-    return cy.get('.footer_social').find('a').should('have.length', 3);
+    return cy.get('.social');
   }
 }
 export default ProductInventory;

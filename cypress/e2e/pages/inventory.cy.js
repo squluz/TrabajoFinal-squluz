@@ -1,10 +1,14 @@
 import ProductInventory from '../components/inventory/ProductInventory';
+import LoginPage from '../components/login/loginPage';
+
 
 describe('Exploración y búsqueda de productos', () => {
     const productInventory = new ProductInventory();
+    const loginPage = new LoginPage();
 
-    beforeEach(() => {
-        productInventory.visit();
+    beforeEach(function () {
+        loginPage.navigate();
+        loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
     });
 
     it('Exploración de categorías de productos', () => {
@@ -12,31 +16,26 @@ describe('Exploración y búsqueda de productos', () => {
         cy.url().should('include', 'inventory-item.html?id=4');
     });
 
-    it('Búsqueda de productos', () => {
-        inventoryPage.filterProduct('Sauce Labs Fleece Jacket');
-        cy.get('.inventory_item_name')
-            .should('contain.text', 'Sauce Labs Fleece Jacket');
+    it('Filtrar productos', () => {
+        productInventory.filterOptions().forEach(el => {
+            productInventory.filterProduct(el);
+        }
+        )
     });
-    
-    //revisar este test
-    it('Filtrar productos por precio: de menor a mayor', () => {
-        productInventory.filterProducts('lohi');
-        cy.get('.inventory_item_price')
-            .then(prices => {
-                let sortedPrices = Array.from(prices).map(price => parseFloat(price.textContent.slice(1)));
-                let isSorted = sortedPrices.every((price, index) => index === 0 || price >= sortedPrices[index - 1]);
-                expect(isSorted).to.be.true;
-            });
     it('Verificar copyright en el footer', () => {
-    inventoryPage.verifyCopyright();
-        });
+        productInventory.verifyCopyright();
+    });
 
     it('Verificar enlaces a redes sociales en el footer', () => {
-    inventoryPage.verifySocialMediaLinks();
-        });
-
+        productInventory.verifySocialMediaLinks().find('li').each((el,index)=>{
+            expect(el.text()).to.equal(productInventory.socialMediaOption()[index])
+        })
+       
+        
     });
+
 });
+
 
 
 

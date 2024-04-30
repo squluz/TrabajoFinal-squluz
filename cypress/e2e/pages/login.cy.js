@@ -22,7 +22,7 @@ describe('Validate login with validate credencial', () => {
 
 
   it('should validate login functionality', () => {
-   loginPage.login('standard_user', 'secret_sauce'); 
+   loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword')); 
    productPage.pageTitle().should('be.visible');
 
 
