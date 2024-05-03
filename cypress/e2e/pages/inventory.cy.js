@@ -1,3 +1,4 @@
+import { it } from 'node:test';
 import ProductInventory from '../components/inventory/ProductInventory';
 import LoginPage from '../components/login/loginPage';
 
@@ -22,6 +23,8 @@ describe('Exploración y búsqueda de productos', () => {
         }
         )
     });
+
+    
     it('Verificar copyright en el footer', () => {
         productInventory.verifyCopyright();
     });
