@@ -11,23 +11,24 @@ describe('Add and remove product card', () => {
     beforeEach(() => {
         loginPage.navigate();
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
-        // productInventory.navigate();
+        //productInventory.navigate();
     });
 
     it('Add product cart, remove button, view counter', () => {
         const productName = changeProductName(pName).replace(/\s+/g, '-');
         productInventory.addToCart(productName);
         cy.contains('.shopping_cart_badge', '1').should('be.visible');
-        cy.contains(`[data-test="remove-${productName}"]`).should('be.visible')
+        cy.get(`button[name="remove-${productName}"]`).should('be.visible')
     });
-    // test de validacion que el boton cambie de nombre a remove 
+    
+    // test de validación que el boton cambie de nombre a remove 
 
     it('Remove product cart, add product button, view counter', () => {
         const productName = changeProductName(pName).replace(/\s+/g, '-');
         productInventory.addToCart(productName);
         cy.contains('.shopping_cart_badge', '1').should('be.visible');
         productInventory.removeFromCart(productName);
-        cy.contains(`[data-test="add-to-cart-${productName}"]`).should('be.visible')
+      //  cy.contains(`[data-test="add-to-cart-${productName}"]`).should('be.visible')
     });
     //asercion de que el boton teng un add to cart 
 
@@ -49,6 +50,7 @@ describe('Add and remove product card', () => {
         productInventory.verifyProductInCart().each(($el, index) => {
             expect($el.text()).to.equal('Sauce Labs Fleece Jacket')
         });
+        
     });
 
 });

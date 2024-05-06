@@ -1,4 +1,3 @@
-import { it } from 'node:test';
 import ProductInventory from '../components/inventory/ProductInventory';
 import LoginPage from '../components/login/loginPage';
 
