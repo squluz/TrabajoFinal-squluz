@@ -1,5 +1,6 @@
 import ProductInventory from '../components/inventory/ProductInventory';
 import LoginPage from '../components/login/loginPage';
+import Footer from '../components/footer/footer';
 
 
 describe('Exploración y búsqueda de productos', () => {
@@ -22,7 +23,6 @@ describe('Exploración y búsqueda de productos', () => {
         }
         )
     });
-
     
     it('Verificar copyright en el footer', () => {
         productInventory.verifyCopyright();
@@ -42,9 +42,8 @@ describe('Exploración y búsqueda de productos', () => {
 
 
 //validar cantidad de products en la pantalla
+
 //validar filtros 
 //validar tyc-copyrigt 
-//redes sociales
-//visualizar conteo de carrito al agregar productos 
-//vidsualizar remover productos 
+ 
 

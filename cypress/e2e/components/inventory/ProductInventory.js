@@ -10,15 +10,22 @@ class ProductInventory {
     cy.get('#add-to-cart-sauce-labs-backpack').click();
 
   }
+  detailProduct (productDetail, detailItem, priceDetail){
+    cy.get('#.inventory_details_name.large_size').type(productDetail);
+    cy.get('.inventory_details_desc.large_size').type(detailItem);
+    cy.get('.inventory_details_price').type(priceDetail);
+    cy.get('#add-to-cart-sauce-labs-backpack').click();
+  }
+
+
   pageTitle() {
     return cy.get('[data-test="title"]');
   }
-  //revisar factibilidad de escribirlo asi 
-
+ 
   addToCart(productName) {
     cy.get(`[data-test="add-to-cart-${productName}"]`).click();
   }
-  //revisar factibilidad de escribirlo asi sauce-labs-backpack
+  
   removeFromCart(productName) {
     cy.get(`[data-test="remove-${productName}"]`).click();
 
@@ -50,14 +57,6 @@ class ProductInventory {
   filterOptions() {
     return ['az', 'za', 'lohi', 'hilo']
   }
-  verifyCopyright() {
-    return cy.get('.footer_copy').invoke('text').should('contain', 'Sauce Labs');
-  }
-  socialMediaOption() {
-    return ['Twitter', 'Facebook', 'LinkedIn']
-  }
-  verifySocialMediaLinks() {
-    return cy.get('.social');
-  }
+  
 }
 export default ProductInventory;

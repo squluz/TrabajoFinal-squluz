@@ -1,0 +1,1 @@
+// elementos que persistente en la web (titulo swag labs, icono de carrito, menu hamburguesa)

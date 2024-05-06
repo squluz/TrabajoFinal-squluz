@@ -2,6 +2,7 @@ class LoginPage {
     navigate() {
         cy.visit(Cypress.env('url'));
     }
+    
     login(username, password) {
         cy.get('#user-name').type(username);
         cy.get('#password').type(password);
