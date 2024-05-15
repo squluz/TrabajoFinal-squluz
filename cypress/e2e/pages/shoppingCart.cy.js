@@ -8,3 +8,8 @@
 //validar eliminar productos cuando hay mas de dos productos en la cesta 
 //persistencia de carrito al hacer logout 
 
+
+
+// it('check footer', () => {
+//     cy.checkfooter()
+// })

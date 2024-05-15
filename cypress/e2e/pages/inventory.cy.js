@@ -3,6 +3,7 @@ import LoginPage from '../components/login/loginPage';
 import Footer from '../components/footer/footer';
 
 
+
 describe('Exploración y búsqueda de productos', () => {
     const productInventory = new ProductInventory();
     const loginPage = new LoginPage();
@@ -23,27 +24,24 @@ describe('Exploración y búsqueda de productos', () => {
         }
         )
     });
-    
-    it('Verificar copyright en el footer', () => {
-        productInventory.verifyCopyright();
-    });
 
-    it('Verificar enlaces a redes sociales en el footer', () => {
-        productInventory.verifySocialMediaLinks().find('li').each((el,index)=>{
-            expect(el.text()).to.equal(productInventory.socialMediaOption()[index])
-        })
-       
-        
-    });
+    it('check footer', () => {
+        cy.checkfooter()
+    })
+
+
+
 
 });
 
-
-
+//probar deatlle de producto 
+//Validar el detalle de producto: titulo, descripcion y precio. 
+//VALIDAR BUTTON 
+//Validar go back: "back to product"
 
 //validar cantidad de products en la pantalla
 
 //validar filtros 
 //validar tyc-copyrigt 
- 
+
 

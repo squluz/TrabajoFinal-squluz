@@ -12,7 +12,7 @@ describe('Crea la lista de productos en un archivo', () => {
 
 
 
-    it('should', () => {
+    it.skip('should', () => {
         let productList = []
 
         cy.get('.inventory_item_name ').each(($el) => {
@@ -25,12 +25,22 @@ describe('Crea la lista de productos en un archivo', () => {
 
 
     })
-    it('read json', () => {
+    it.skip('read json', () => {
         //Leo desde el archivo un producto y le hago click en agregar al carrito
         //Reemplazar el [0] por un número random para acceder a cualquier elemento
         cy.fixture('productList').then(function (product) {
             this.product = product
             cy.get(`button[name='add-to-cart-${this.product[3].selectorName}']`).click();
         })
+
+    })
+
+
+    // probar valor de cookie o vigencia de la misma
+    
+
+    it ('cookie', () => {
+    console.log (cy.getCookie('session-username'))
+   // .should('have.property', 'value', '123ABC') 
     })
 })

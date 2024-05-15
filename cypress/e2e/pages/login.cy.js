@@ -16,13 +16,13 @@ describe('Validate login with validate credencial', () => {
   });
   
   it('should validate incorrect login', () => {
-    loginPage.login('errortext','errorpass');
+    cy.login('errortext','errorpass');
     loginPage.errorLabel().should('be.visible');
   });
 
 
   it('should validate login functionality', () => {
-   loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword')); 
+   cy.login(Cypress.env('qauser'), Cypress.env('qapassword')); 
    productPage.pageTitle().should('be.visible');
 
 
