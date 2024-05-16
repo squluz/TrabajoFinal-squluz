@@ -12,13 +12,17 @@ describe('Crea la lista de productos en un archivo', () => {
 
 
 
-    it.skip('should', () => {
+    it('should', () => {
         let productList = []
 
-        cy.get('.inventory_item_name ').each(($el) => {
+        cy.get('.inventory_item_name').each(($el) => {
+            console.log()
             productList.push({
                 productName: $el.text(),
-                selectorName: $el.text().toLocaleLowerCase().replace(/\s+/g, '-')
+                selectorName: $el.text().toLocaleLowerCase().replace(/\s+/g, '-'),
+                productDesc: $el.parent().parent().find('div.inventory_item_desc').text(),
+                productPrice: $el.parent().parent().siblings().find('.inventory_item_price').text(),
+                productImg:$el.parent().parent().parent().parent().find('img').attr('data-test').replace('inventory-','')
             })
             cy.writeFile('cypress/fixtures/productList.json', productList)
         });
@@ -37,10 +41,10 @@ describe('Crea la lista de productos en un archivo', () => {
 
 
     // probar valor de cookie o vigencia de la misma
-    
 
-    it ('cookie', () => {
-    console.log (cy.getCookie('session-username'))
-   // .should('have.property', 'value', '123ABC') 
+
+    it.skip('cookie', () => {
+        console.log(cy.getCookie('session-username'))
+        // .should('have.property', 'value', '123ABC') 
     })
 })
