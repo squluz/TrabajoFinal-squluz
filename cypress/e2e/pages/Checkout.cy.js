@@ -3,12 +3,15 @@ import LoginPage from '../components/login/loginPage';
 import Shoppingcart from '../components/shopcart/shoppingcart';
 import CheckoutPage from '../components/checkout/CheckoutPage';
 import Checkout2 from  '../components/checkout/Checkout2';
+import BurgerMenu from '../components/burguerMenu/BurgerMenu';
 
 describe('Checkout flow', () => {
     const loginPage = new LoginPage();
     const shoppingcart = new Shoppingcart();
     const checkoutPage = new CheckoutPage();
     const checkout2  = new Checkout2();
+    const checkoutCompletePage = new checkoutCompletePage();
+    const burguerMenu = new BurgerMenu();
 
     it('should complete the checkout process', () => {
 
@@ -50,24 +53,29 @@ describe('Checkout flow', () => {
 
         // Navigate back and test the cancel button
         cy.go('back');
-        checkout2.clickCancelButton();
+        Checkout2.clickCancelButton();
         cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
     
     });
     //it ('Validate de thank you for your order!',() => {
-//no se donde colocar las pruebas de pagina de agradecimeitno. Es viable dejarla en este test o en otro?
+
+
+    //no se donde colocar las pruebas de pagina de agradecimeitno. Es viable dejarla en este test o en otro?
     //});
 
 
      // Verify elements on checkout complete page
-        checkoutCompletePage.getCompleteHeader().should('contain.text', 'THANK YOU FOR YOUR ORDER');
+    checkoutCompletePage.getCompleteHeader().should('contain.text', 'THANK YOU FOR YOUR ORDER');
         checkoutCompletePage.getCompleteText().should('contain.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!');
 
         // Verify the Back Home button functionality
         checkoutCompletePage.getBackHomeButton().should('be.visible'); // Verifica que el botón Back Home sea visible
         checkoutCompletePage.clickBackHomeButton(); // Click en Back Home
         cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
-    
+    //  Perform logout from the header menu
+    BurgerMenu.clickMenuButton(); // Click en el botón del menú
+    BurgerMenu.clickLogoutLink(); // Click en el enlace de logout
+    cy.url().should('include', '/'); // Verifica que la URL cambie a la página de login
 
 });
 
