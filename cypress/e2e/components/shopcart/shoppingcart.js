@@ -24,4 +24,6 @@ export default class ShopingCart {
     removeItem(productName) {
         return cy.get(`[data-test=remove-${productName}]`)
     }
+
+    
 };

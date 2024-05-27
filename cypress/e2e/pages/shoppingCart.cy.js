@@ -34,7 +34,7 @@ describe('Shoping Cart', () => {
         shopingCart.itemPrice().should('be.visible')
     });
 
-    //DONE validar boton remove
+    //DONE Validat button remove
     it.skip('Check remove item', () => {
         productInventory.addToCart(productName);
         shopingCart.cartIcon()
@@ -45,8 +45,6 @@ describe('Shoping Cart', () => {
 
     });
 
-    //TODO validar si se puede cambiar la cantidad manualmente 
-    //Aparentemente no se puede modificar la cantidad
     
     it.skip('Modify element qty', () => {
         productInventory.addToCart(productName);
@@ -56,8 +54,7 @@ describe('Shoping Cart', () => {
 
     });
 
-    //DONE validar continue shopping 
-    it.skip('Check Continiue Shopping', () => {
+    it.skip('Check Continue Shopping', () => {
         productInventory.addToCart(productName);
         shopingCart.cartIcon()
 
@@ -68,7 +65,9 @@ describe('Shoping Cart', () => {
     });
 
     //TODO  validar checkout 
-    
+    it('Go to checkout', () => {
+        
+    });
     //DONE vaciar carro
     it('Remove all items from cart', () => {
         productInventory.addToCart(productName);
