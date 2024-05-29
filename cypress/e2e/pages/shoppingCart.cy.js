@@ -86,7 +86,5 @@ describe('Shoping Cart', () => {
 
     
     
-    
-    //persistencia de carrito al hacer logout 
 });
 

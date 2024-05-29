@@ -14,7 +14,7 @@ describe('', () => {
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
     });
 
-    it.skip('Validar Card de producto', () => {
+    it.skip('Validate product card', () => {
         cy.get('div').contains(productName).click();
 
         productDetail.goBackToProductsBtn().should('be.visible')
@@ -27,7 +27,7 @@ describe('', () => {
     });
 
    
-    it.skip('Validar datos del producto', () => {
+    it.skip('validate product data', () => {
         cy.fixture('productList').then(function (product) {
             productList = product
             const prodID = getRandomIndex(0, productList.length - 1)
@@ -49,7 +49,7 @@ describe('', () => {
     });
 
 
-    it('Ir a detalle de roducto y volver', () => {
+    it('Go to product detail and return', () => {
         cy.get('div').contains(productName).click();
         cy.wait(2000)
         productDetail.goBackToProductsBtn().click()

@@ -12,7 +12,6 @@ describe('Home page - Elementos por defecto', () => {
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
     });
 
-    // elementos que persistente en la web (titulo swag labs, icono de carrito, menu hamburguesa)
     it('Verificando existencia de elementos base', () => {
         mainElements.pageTitle().should('exist').and('be.visible')
         mainElements.cartIcon().should('exist').and('be.visible')

@@ -12,7 +12,7 @@ describe('Menú lateral', () => {
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
     });
 
-    it('Validar existencia de manu lateral', () => {
+    it('Validate side menu existence', () => {
         cy.checkBurgerMenu()
     });
 
@@ -22,7 +22,7 @@ describe('Menú lateral', () => {
         });
     });
 
-    it('Cerrar el menu lateral', () => {
+    it('Close side menu', () => {
         burgerMenu.burgerIcon().click()
         cy.wait(3000)
         burgerMenu.closeBurgerMenu().click()
