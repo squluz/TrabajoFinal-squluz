@@ -23,6 +23,7 @@ describe('Checkout flow', () => {
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
 
     });
+
     it('should complete the checkout process', () => {
 
         productInventory.addToCart('sauce-labs-backpack');
@@ -30,11 +31,10 @@ describe('Checkout flow', () => {
         shoppingcart.checkout();
         checkoutPage.fillCheckoutForm('Luz', 'Squarzon', '12345');
         checkoutPage.clickContinueButton();
-        checkout2.getItemNames().should('have.length.greaterThan', 0); // Verifica que haya al menos un item
-        
-        checkout2.getCancelButton().should('be.visible'); // Verifica que el botón Cancel sea visible
-        checkout2.getFinishButton().should('be.visible'); // Verifica que el botón Finish sea visible
-        
+        checkout2.getItemNames().should('have.length.greaterThan', 0);
+        checkout2.getCancelButton().should('be.visible');
+        checkout2.getFinishButton().should('be.visible');
+
         let itemPrices = [];
         checkout2.getItemPrices().each(($el) => {
             itemPrices.push(parseFloat($el.text().replace('$', '')));
@@ -53,47 +53,28 @@ describe('Checkout flow', () => {
                     const displayedTotal = parseFloat($total.text().replace('Total: $', ''));
                     expect(displayedTotal).to.equal(calculatedTotal);
 
-                     // Test the functionality of the finish button
-                     checkout2.clickFinishButton();
-                     cy.url().should('include', '/checkout-complete.html'); // Verifica que la URL cambie a la página de confirmación
- // Verify elements on checkout complete page
- checkoutCompletePage.getCompleteHeader().should('contain.text', 'Thank you for your order!');
- checkoutCompletePage.getCompleteText().should('contain.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!');
-
- // Verify the Back Home button functionality
- checkoutCompletePage.getBackHomeButton().should('be.visible'); // Verifica que el botón Back Home sea visible
- checkoutCompletePage.clickBackHomeButton(); // Click en Back Home
- cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
- 
- 
- //  Perform logout from the header menu
- burgerMenu.burgerIcon().click();// Click en el botón del menú
- burgerMenu.getLogoutLink().click(); // Click en el enlace de logout
- cy.url().should('include', '/'); // Verifica que la URL cambie a la página de login
-
-
-                   
-
-                    // Navigate back and test the cancel button
                     cy.go('back');
                     checkout2.clickCancelButton();
-                    cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
+                    cy.url().should('include', '/inventory.html');
+                    checkout2.clickFinishButton();
+                    cy.url().should('include', '/checkout-complete.html');
+                    checkoutCompletePage.getCompleteHeader().should('contain.text', 'Thank you for your order!');
+                    checkoutCompletePage.getCompleteText().should('contain.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!');
+                    checkoutCompletePage.getBackHomeButton().should('be.visible');
+                    checkoutCompletePage.clickBackHomeButton();
+                    cy.url().should('include', '/inventory.html');
+                    burgerMenu.burgerIcon().click();
+                    burgerMenu.getLogoutLink().click();
+                    cy.url().should('include', '/');
+
+
+
+
 
                 });
-               
+
             });
         });
     });
 });
 
-
-
-
-
-
-//Validar elementos titulo y tabla 
-//colocar un faker
-// validar campos de texto 
-//validar campos mandatorios
-//validar que al completar la tabla y apretar continuar yd ecidir  "volver" se vuelva a checkout yOY INFORMATION 
-//Validar el boton cancel que vuelva a detalle de your cart

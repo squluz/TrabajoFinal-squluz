@@ -10,15 +10,13 @@ describe('Empty Cart functionalities', () => {
             loginPage.navigate();
             loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
         });
-       
+
         emptyCart.visit();
 
-        // Verify the cart is empty
         EmptyCart.getEmptyCartMessage();
 
-        // Verify the presence and functionality of the Continue Shopping button
-        cartPage.getContinueShoppingButton().should('be.visible'); // Verifica que el botón Continue Shopping sea visible
-        cartPage.clickContinueShoppingButton(); // Click en Continue Shopping
-        cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
+        cartPage.getContinueShoppingButton().should('be.visible');
+        cartPage.clickContinueShoppingButton();
+        cy.url().should('include', '/inventory.html');
     });
 });

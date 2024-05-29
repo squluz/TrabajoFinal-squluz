@@ -24,10 +24,7 @@ class LoginPage {
       errorLabel(){
         return cy.get('.error-message-container.error');
       }
-     
-    //placeholder y logo 
-    //script de web en config
-    
+       
     }
     
     export default LoginPage;

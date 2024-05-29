@@ -1,4 +1,9 @@
 class CheckoutPage {
+
+    navigate() {
+        cy.visit(Cypress.env('url') + 'checkout-step-one.html');
+    }
+
     getFirstNameInput() {
         return cy.get('#first-name');
     }

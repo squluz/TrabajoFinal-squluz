@@ -1,7 +1,6 @@
-//probar  carrito vacio desde inicio 
 class EmptyCart {
-    visit() {
-        cy.visit('https://www.saucedemo.com/cart.html');
+    navigate() {
+        cy.visit(Cypress.env('url') + 'cart.html');
     }
 
     getCartItem() {

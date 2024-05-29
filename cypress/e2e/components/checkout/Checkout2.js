@@ -1,7 +1,7 @@
 class Checkout2 {
-    visit() {
-        cy.visit('https://www.saucedemo.com/checkout-step-two.html');
-    }
+    navigate() {
+        cy.visit(Cypress.env('url') + 'checkout--step-two.html');
+      }
 
     getItemNames() {
         return cy.get('.inventory_item_name');

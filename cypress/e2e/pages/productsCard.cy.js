@@ -14,7 +14,6 @@ describe('', () => {
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
     });
 
-    //DONE validar las card de productos 
     it.skip('Validar Card de producto', () => {
         cy.get('div').contains(productName).click();
 
@@ -27,7 +26,7 @@ describe('', () => {
 
     });
 
-    //DONE titulo, descripcion, precio, foto
+   
     it.skip('Validar datos del producto', () => {
         cy.fixture('productList').then(function (product) {
             productList = product
@@ -49,7 +48,7 @@ describe('', () => {
 
     });
 
-    //DONE detalle de producto - goback
+
     it('Ir a detalle de roducto y volver', () => {
         cy.get('div').contains(productName).click();
         cy.wait(2000)

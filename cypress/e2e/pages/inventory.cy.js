@@ -29,19 +29,4 @@ describe('Exploración y búsqueda de productos', () => {
         cy.checkfooter()
     })
 
-
-
-
 });
-
-//probar deatlle de producto 
-//Validar el detalle de producto: titulo, descripcion y precio. 
-//VALIDAR BUTTON 
-//Validar go back: "back to product"
-
-//validar cantidad de products en la pantalla
-
-//validar filtros 
-//validar tyc-copyrigt 
-
-

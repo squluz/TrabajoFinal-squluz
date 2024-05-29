@@ -1,26 +1,44 @@
 [
   {
     "productName": "Sauce Labs Backpack",
-    "selectorName": "sauce-labs-backpack"
+    "selectorName": "sauce-labs-backpack",
+    "productDesc": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
+    "productPrice": "$29.99",
+    "productImg": "item-sauce-labs-backpack-img"
   },
   {
     "productName": "Sauce Labs Bike Light",
-    "selectorName": "sauce-labs-bike-light"
+    "selectorName": "sauce-labs-bike-light",
+    "productDesc": "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.",
+    "productPrice": "$9.99",
+    "productImg": "item-sauce-labs-bike-light-img"
   },
   {
     "productName": "Sauce Labs Bolt T-Shirt",
-    "selectorName": "sauce-labs-bolt-t-shirt"
+    "selectorName": "sauce-labs-bolt-t-shirt",
+    "productDesc": "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.",
+    "productPrice": "$15.99",
+    "productImg": "item-sauce-labs-bolt-t-shirt-img"
   },
   {
     "productName": "Sauce Labs Fleece Jacket",
-    "selectorName": "sauce-labs-fleece-jacket"
+    "selectorName": "sauce-labs-fleece-jacket",
+    "productDesc": "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
+    "productPrice": "$49.99",
+    "productImg": "item-sauce-labs-fleece-jacket-img"
   },
   {
     "productName": "Sauce Labs Onesie",
-    "selectorName": "sauce-labs-onesie"
+    "selectorName": "sauce-labs-onesie",
+    "productDesc": "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.",
+    "productPrice": "$7.99",
+    "productImg": "item-sauce-labs-onesie-img"
   },
   {
     "productName": "Test.allTheThings() T-Shirt (Red)",
-    "selectorName": "test.allthethings()-t-shirt-(red)"
+    "selectorName": "test.allthethings()-t-shirt-(red)",
+    "productDesc": "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.",
+    "productPrice": "$15.99",
+    "productImg": "item-test.allthethings()-t-shirt-(red)-img"
   }
 ]
