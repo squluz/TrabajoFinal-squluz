@@ -4,10 +4,10 @@ class CheckoutCompletePage {
       }
 
     getCompleteHeader() {
-        return cy.get('.complete-header');
+        return cy.get('[data-test="complete-header"]');
     }
 getCompletePony() {
-    return cy.get('.pony_express')
+    return cy.get('.pony_express');
 }
     getCompleteText() {
         return cy.get('.complete-text');

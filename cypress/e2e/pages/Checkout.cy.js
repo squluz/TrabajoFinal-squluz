@@ -2,30 +2,39 @@
 import LoginPage from '../components/login/loginPage';
 import Shoppingcart from '../components/shopcart/shoppingcart';
 import CheckoutPage from '../components/checkout/CheckoutPage';
-import Checkout2 from  '../components/checkout/Checkout2';
+import Checkout2 from '../components/checkout/Checkout2';
 import BurgerMenu from '../components/burguerMenu/BurgerMenu';
+import CheckoutCompletePage from '../components/checkout/CheckoutCompletePage';
+import ProductInventory from '../components/inventory/ProductInventory';
+
 
 describe('Checkout flow', () => {
     const loginPage = new LoginPage();
     const shoppingcart = new Shoppingcart();
     const checkoutPage = new CheckoutPage();
-    const checkout2  = new Checkout2();
-    const checkoutCompletePage = new checkoutCompletePage();
-    const burguerMenu = new BurgerMenu();
+    const checkout2 = new Checkout2();
+    const checkoutCompletePage = new CheckoutCompletePage();
+    const burgerMenu = new BurgerMenu();
+    const productInventory = new ProductInventory();
 
+    beforeEach(() => {
+        cy.viewport(1200, 900)
+        loginPage.navigate();
+        loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
+
+    });
     it('should complete the checkout process', () => {
 
-        loginPage.visit();
-        loginPage.login('standard_user', 'secret_sauce');
-        shoppingcart.visit();
-        shoppingcart.clickCheckoutButton();
+        productInventory.addToCart('sauce-labs-backpack');
+        shoppingcart.cartIcon();
+        shoppingcart.checkout();
         checkoutPage.fillCheckoutForm('Luz', 'Squarzon', '12345');
         checkoutPage.clickContinueButton();
         checkout2.getItemNames().should('have.length.greaterThan', 0); // Verifica que haya al menos un item
-        checkout2.getFinishButton().should('be.visible'); // Verifica que el botón Finish sea visible
-        checkout2.getCancelButton().should('be.visible'); // Verifica que el botón Cancel sea visible
         
-        //Validate price, taxes
+        checkout2.getCancelButton().should('be.visible'); // Verifica que el botón Cancel sea visible
+        checkout2.getFinishButton().should('be.visible'); // Verifica que el botón Finish sea visible
+        
         let itemPrices = [];
         checkout2.getItemPrices().each(($el) => {
             itemPrices.push(parseFloat($el.text().replace('$', '')));
@@ -39,44 +48,42 @@ describe('Checkout flow', () => {
             checkout2.getTaxLabel().then($tax => {
                 const displayedTax = parseFloat($tax.text().replace('Tax: $', ''));
                 const calculatedTotal = calculatedSubtotal + displayedTax;
-                
+
                 checkout2.getTotalLabel().then($total => {
                     const displayedTotal = parseFloat($total.text().replace('Total: $', ''));
                     expect(displayedTotal).to.equal(calculatedTotal);
+
+                     // Test the functionality of the finish button
+                     checkout2.clickFinishButton();
+                     cy.url().should('include', '/checkout-complete.html'); // Verifica que la URL cambie a la página de confirmación
+ // Verify elements on checkout complete page
+ checkoutCompletePage.getCompleteHeader().should('contain.text', 'Thank you for your order!');
+ checkoutCompletePage.getCompleteText().should('contain.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!');
+
+ // Verify the Back Home button functionality
+ checkoutCompletePage.getBackHomeButton().should('be.visible'); // Verifica que el botón Back Home sea visible
+ checkoutCompletePage.clickBackHomeButton(); // Click en Back Home
+ cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
+ 
+ 
+ //  Perform logout from the header menu
+ burgerMenu.burgerIcon().click();// Click en el botón del menú
+ burgerMenu.getLogoutLink().click(); // Click en el enlace de logout
+ cy.url().should('include', '/'); // Verifica que la URL cambie a la página de login
+
+
+                   
+
+                    // Navigate back and test the cancel button
+                    cy.go('back');
+                    checkout2.clickCancelButton();
+                    cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
+
                 });
+               
             });
         });
-
-        // Test the functionality of the finish button
-        Checkout2.clickFinishButton();
-        cy.url().should('include', '/checkout-complete.html'); // Verifica que la URL cambie a la página de confirmación
-
-        // Navigate back and test the cancel button
-        cy.go('back');
-        Checkout2.clickCancelButton();
-        cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
-    
     });
-    //it ('Validate de thank you for your order!',() => {
-
-
-    //no se donde colocar las pruebas de pagina de agradecimeitno. Es viable dejarla en este test o en otro?
-    //});
-
-
-     // Verify elements on checkout complete page
-    checkoutCompletePage.getCompleteHeader().should('contain.text', 'THANK YOU FOR YOUR ORDER');
-        checkoutCompletePage.getCompleteText().should('contain.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!');
-
-        // Verify the Back Home button functionality
-        checkoutCompletePage.getBackHomeButton().should('be.visible'); // Verifica que el botón Back Home sea visible
-        checkoutCompletePage.clickBackHomeButton(); // Click en Back Home
-        cy.url().should('include', '/inventory.html'); // Verifica que la URL cambie a la página del inventario
-    //  Perform logout from the header menu
-    BurgerMenu.clickMenuButton(); // Click en el botón del menú
-    BurgerMenu.clickLogoutLink(); // Click en el enlace de logout
-    cy.url().should('include', '/'); // Verifica que la URL cambie a la página de login
-
 });
 
 

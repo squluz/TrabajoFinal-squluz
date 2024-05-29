@@ -14,17 +14,15 @@ describe('Shoping Cart', () => {
         cy.viewport(1200,900)
         loginPage.navigate();
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
-        //productInventory.navigate();
+      
     });
 
-    //DONE titulo "your cart"
     it.skip('Checking page title', () => {
         shopingCart.cartIcon()
         cy.get('[data-test="title"]').should('have.text', 'Your Cart')
 
     });
 
-    //DONE tabla de productos "qty, description, precio"
     it.skip('Check items', () => {
         productInventory.addToCart(productName);
         shopingCart.cartIcon()
@@ -34,8 +32,7 @@ describe('Shoping Cart', () => {
         shopingCart.itemPrice().should('be.visible')
     });
 
-    //DONE Validat button remove
-    it.skip('Check remove item', () => {
+       it.skip('Check remove item', () => {
         productInventory.addToCart(productName);
         shopingCart.cartIcon()
 
@@ -68,7 +65,7 @@ describe('Shoping Cart', () => {
     it('Go to checkout', () => {
         
     });
-    //DONE vaciar carro
+    
     it('Remove all items from cart', () => {
         productInventory.addToCart(productName);
         cy.wait(2000)

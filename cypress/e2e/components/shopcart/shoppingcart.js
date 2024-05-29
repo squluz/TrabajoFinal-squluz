@@ -1,4 +1,8 @@
 export default class ShopingCart {
+    
+        navigate() {
+            cy.visit(Cypress.env('url')+ 'cart.html');
+        }
     cartIcon() {
         cy.get('[data-test="shopping-cart-link"]').click()
     }
@@ -9,7 +13,7 @@ export default class ShopingCart {
         cy.get('[data-test="continue-shopping"]').click()
     }
     checkout() {
-        cy.get('[data-test="checkout"]').click()
+        cy.get('[data-test="checkout"]').click() 
     }
     qtyElement() {
         return cy.get('[data-test="item-quantity"]')
