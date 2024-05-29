@@ -17,13 +17,13 @@ describe('Shoping Cart', () => {
       
     });
 
-    it.skip('Checking page title', () => {
+    it('Checking page title', () => {
         shopingCart.cartIcon()
         cy.get('[data-test="title"]').should('have.text', 'Your Cart')
 
     });
 
-    it.skip('Check items', () => {
+    it('Check items', () => {
         productInventory.addToCart(productName);
         shopingCart.cartIcon()
 
@@ -32,7 +32,7 @@ describe('Shoping Cart', () => {
         shopingCart.itemPrice().should('be.visible')
     });
 
-       it.skip('Check remove item', () => {
+       it ('Check remove item', () => {
         productInventory.addToCart(productName);
         shopingCart.cartIcon()
 
@@ -43,7 +43,7 @@ describe('Shoping Cart', () => {
     });
 
     
-    it.skip('Modify element qty', () => {
+    it('Modify element qty', () => {
         productInventory.addToCart(productName);
         shopingCart.cartIcon()
 
@@ -51,7 +51,7 @@ describe('Shoping Cart', () => {
 
     });
 
-    it.skip('Check Continue Shopping', () => {
+    it('Check Continue Shopping', () => {
         productInventory.addToCart(productName);
         shopingCart.cartIcon()
 
@@ -61,11 +61,7 @@ describe('Shoping Cart', () => {
 
     });
 
-    //TODO  validar checkout 
-    it('Go to checkout', () => {
-        
-    });
-    
+       
     it('Remove all items from cart', () => {
         productInventory.addToCart(productName);
         cy.wait(2000)
@@ -82,9 +78,12 @@ describe('Shoping Cart', () => {
         cy.get('@btn').should('be.visible').click({force:true,multiple:true})
 
         shopingCart.qtyElement().should('not.exist')
+
     });
 
-    
+    it('Check footer', () => {
+        cy.checkfooter()
+    })
     
 });
 

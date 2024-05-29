@@ -3,7 +3,7 @@ import { getRandomIndex } from "../../assets/util";
 import LoginPage from "../components/login/loginPage";
 import ProductDetail from "../components/productDetail/ProductDetail";
 
-describe('', () => {
+describe('Validate product card', () => {
     const loginPage = new LoginPage()
     let productName = 'Sauce Labs Backpack'
     let productList = []
@@ -14,7 +14,7 @@ describe('', () => {
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
     });
 
-    it.skip('Validate product card', () => {
+    it ('Validate product card', () => {
         cy.get('div').contains(productName).click();
 
         productDetail.goBackToProductsBtn().should('be.visible')
@@ -27,7 +27,7 @@ describe('', () => {
     });
 
    
-    it.skip('validate product data', () => {
+    it ('validate product data', () => {
         cy.fixture('productList').then(function (product) {
             productList = product
             const prodID = getRandomIndex(0, productList.length - 1)
@@ -43,17 +43,17 @@ describe('', () => {
         })
     });
     
-    //TODO button -solo existencia 
-    it.skip('Validar', () => {
-
-    });
-
-
+    
     it('Go to product detail and return', () => {
         cy.get('div').contains(productName).click();
         cy.wait(2000)
         productDetail.goBackToProductsBtn().click()
         cy.url().should('include','inventory.html')
+
     });
+
+    it('check footer', () => {
+        cy.checkfooter()
+    })
 });
 

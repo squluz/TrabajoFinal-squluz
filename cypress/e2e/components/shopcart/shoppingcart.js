@@ -2,7 +2,7 @@ export default class ShopingCart {
     
         navigate() {
             cy.visit(Cypress.env('url')+ 'cart.html');
-        }
+        } 
     cartIcon() {
         cy.get('[data-test="shopping-cart-link"]').click()
     }

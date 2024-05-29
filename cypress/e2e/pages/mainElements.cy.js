@@ -1,6 +1,6 @@
 /// <reference types="Cypress"/>
 
-import BaseElements from "../components/baseElements/baseElements";
+import BaseElements from "../components/baseElement/BaseElements";
 import LoginPage from "../components/login/loginPage";
 
 describe('Home page - Elementos por defecto', () => {
@@ -19,4 +19,8 @@ describe('Home page - Elementos por defecto', () => {
         mainElements.sectionTitle().should('exist').and('be.visible')
         mainElements.burgerMenu().should('exist').and('be.visible')
     });
+
+    it('Check footer', () => {
+        cy.checkfooter()
+    })
 });

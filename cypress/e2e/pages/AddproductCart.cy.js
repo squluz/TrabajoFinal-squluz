@@ -19,6 +19,7 @@ describe('Add and remove product card', () => {
         productInventory.addToCart(productName);
         cy.contains('.shopping_cart_badge', '1').should('be.visible');
         cy.get(`button[name="remove-${productName}"]`).should('be.visible')
+        
     });
 
     it('Remove product cart, add product button, view counter', () => {

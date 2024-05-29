@@ -1,6 +1,7 @@
 /// <reference types="Cypress"/>
 
-import BurgerMenu from "../components/burgerMenu/BurgerMenu";
+
+import BurgerMenu from "../components/burguerMenu/BurgerMenu";
 import LoginPage from "../components/login/loginPage";
 
 describe('Menú lateral', () => {

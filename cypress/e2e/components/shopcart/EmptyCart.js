@@ -7,8 +7,8 @@ class EmptyCart {
         return cy.get('.cart_item');
     }
 
-    getEmptyCartMessage() {
-        return cy.get('.cart_item').should('not.exist');
+    getEmptyCartItem() {
+     cy.get('.cart_item').should('not.exist');
     }
 
     getCheckoutButton() {
