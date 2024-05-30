@@ -41,7 +41,7 @@ describe('Checkout Visual Elements', () => {
         checkout1.clickContinueButton();
 
     });
-    it('Validate elements checkout Step 2', () => {
+    it('Validate - elements checkout Step 2', () => {
 
         productInventory.addToCart('sauce-labs-backpack');
         shoppingcart.cartIcon();
