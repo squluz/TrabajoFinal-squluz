@@ -9,6 +9,7 @@ describe('Exploración y búsqueda de productos', () => {
     const loginPage = new LoginPage();
 
     beforeEach(function () {
+        cy.viewport(Cypress.env('viewport'))
         loginPage.navigate();
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
     });

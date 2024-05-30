@@ -1,9 +1,14 @@
-class CheckoutPage {
+class Checkout1 {
 
     navigate() {
         cy.visit(Cypress.env('url') + 'checkout-step-one.html');
     }
-
+    getAppLogo(){
+        return cy.get('.app_logo');
+    }
+    getTitleText() {
+        return cy.get('.title');
+    }
     getFirstNameInput() {
         return cy.get('#first-name');
     }
@@ -19,6 +24,9 @@ class CheckoutPage {
     getContinueButton() {
         return cy.get('#continue');
     }
+    getCancelButton() {
+        return cy.get('#cancel')
+    }
 
     fillCheckoutForm(firstName, lastName, postalCode) {
         this.getFirstNameInput().type(firstName);
@@ -29,6 +37,9 @@ class CheckoutPage {
     clickContinueButton() {
         this.getContinueButton().click();
     }
+    clickCancelButton() {
+        this.getCancelButton().click();
+    }
 }
 
-export default CheckoutPage;
+export default Checkout1;

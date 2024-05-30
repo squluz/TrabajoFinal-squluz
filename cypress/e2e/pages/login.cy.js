@@ -6,6 +6,7 @@ describe('Validate login with validate credencial', () => {
   const productPage = new ProductInventory();
 
   beforeEach(() => {
+    cy.viewport(Cypress.env('viewport'))
     loginPage.navigate();
   });
 

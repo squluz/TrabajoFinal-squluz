@@ -8,7 +8,7 @@ describe('Menú lateral', () => {
     const loginPage = new LoginPage()
     const burgerMenu = new BurgerMenu()
     beforeEach(() => {
-        cy.viewport(1200, 900)
+        cy.viewport(Cypress.env('viewport'))
         loginPage.navigate();
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
     });

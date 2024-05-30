@@ -7,6 +7,8 @@ module.exports = {
       url: 'https://www.saucedemo.com/',
       qauser:'standard_user',
       qapassword:'secret_sauce',
+      viewport:'iphone-xr'
   },
+  
 },
 };

@@ -2,7 +2,12 @@ class Checkout2 {
     navigate() {
         cy.visit(Cypress.env('url') + 'checkout--step-two.html');
       }
-
+      getAppLogo(){
+        return cy.get('.app_logo');
+    }
+    getTitleText() {
+        return cy.get('.title');
+    }
     getItemNames() {
         return cy.get('.inventory_item_name');
     }

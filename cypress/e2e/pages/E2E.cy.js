@@ -1,7 +1,7 @@
 
 import LoginPage from '../components/login/loginPage';
 import Shoppingcart from '../components/shopcart/shoppingcart';
-import CheckoutPage from '../components/checkout/CheckoutPage';
+import CheckoutPage from '../components/checkout/Checkout1';
 import Checkout2 from '../components/checkout/Checkout2';
 import BurgerMenu from '../components/burguerMenu/BurgerMenu';
 import CheckoutCompletePage from '../components/checkout/CheckoutCompletePage';
@@ -18,7 +18,7 @@ describe('Checkout flow', () => {
     const productInventory = new ProductInventory();
 
     beforeEach(() => {
-        cy.viewport(1200, 900)
+        cy.viewport(Cypress.env('viewport'))
         loginPage.navigate();
         loginPage.login(Cypress.env('qauser'), Cypress.env('qapassword'));
 
@@ -77,7 +77,4 @@ describe('Checkout flow', () => {
     });
 });
 
-//cy.go('back');
-//checkout2.clickCancelButton();
-//cy.url().should('include', 'inventory.html');
 
