@@ -4,6 +4,7 @@ import Checkout2 from '../components/checkout/Checkout2';
 import ProductInventory from '../components/inventory/ProductInventory';
 import Checkout1 from '../components/checkout/Checkout1';
 import BurgerMenu from '../components/burguerMenu/BurgerMenu';
+import CheckoutCompletePage from '../components/checkout/CheckoutCompletePage';
 
 
 
@@ -12,6 +13,7 @@ describe('Checkout Visual Elements', () => {
     const shoppingcart = new Shoppingcart();
     const checkout1 = new Checkout1();
     const checkout2 = new Checkout2();
+    const checkoutCompletePage = new CheckoutCompletePage();
     const productInventory = new ProductInventory();
     const burgerMenu = new BurgerMenu
 
@@ -51,10 +53,18 @@ describe('Checkout Visual Elements', () => {
         checkout2.getItemNames().should('be.visible')
         checkout2.getItemPrices().should('be.visible')
         checkout2.getPaymentInformation().should('be.visible')
+        checkout2.getValueLabel().should('be.visible')
         checkout2.getShippingInformation().should('be.visible')
-        checkout2.clickContinueButton();
         checkout2.getCancelButton().should('be.visible')
-
+        checkout2.clickFinishButton();
+        checkoutCompletePage.getTitleComplete();
+        checkoutCompletePage.getCompleteHeader().should('be.visible').and('have.text', 'Thank you for your order!');
+        checkoutCompletePage.getCompleteText();
+        checkoutCompletePage.getBackHomeButton().should('be.visible')
+        checkoutCompletePage.clickBackHomeButton();
     });
+    it('check footer', () => {
+        cy.checkfooter()
+    })
 
 });

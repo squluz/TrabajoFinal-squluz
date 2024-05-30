@@ -1,14 +1,16 @@
 class CheckoutCompletePage {
     navigate() {
         cy.visit(Cypress.env('url') + 'checkout-complete.html');
-      }
-
-    getCompleteHeader() {
+    }
+    getTitleComplete() {
+        return cy.get('[data-test="title"]');
+    }
+        getCompleteHeader() {
         return cy.get('[data-test="complete-header"]');
     }
-getCompletePony() {
-    return cy.get('.pony_express');
-}
+    getCompletePony() {
+        return cy.get('.pony_express');
+    }
     getCompleteText() {
         return cy.get('.complete-text');
     }

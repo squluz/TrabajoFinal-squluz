@@ -14,6 +14,9 @@ class Checkout2 {
     getPaymentInformation() {
         return cy.get('.summary_info_label');
     }
+    getValueLabel() {
+        return cy.get('[data-test="payment-info-value"]');
+    }
     getShippingInformation() {
         return cy.get('.summary_value_label');
     }
