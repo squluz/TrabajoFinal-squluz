@@ -26,7 +26,7 @@ describe('Checkout flow', () => {
 
     it('should complete the checkout process', () => {
 
-        productInventory.addToCart('sauce-labs-backpack');
+        productInventory.addToCart('sauce-labs-backpack','sauce-labs-bike-light','sauce-labs-bolt-t-shirt');
         shoppingcart.cartIcon();
         shoppingcart.checkout();
         checkoutPage.fillCheckoutForm('Luz', 'Squarzon', '12345');
